@@ -1,0 +1,17 @@
+{
+  "name": "adb-gateway",
+  "version": "1.0.0",
+  "description": "ADB command forwarding gateway for single Android device",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@devicefarmer/adbkit": "^3.3.9",
+    "express": "^5.1.0",
+    "dotenv": "^16.5.0"
+  }
+}

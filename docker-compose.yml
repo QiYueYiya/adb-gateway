@@ -1,0 +1,24 @@
+services:
+  adb-gateway:
+    image: ghcr.io/qiyueyiya/adb-gateway:latest
+    container_name: adb-gateway
+    hostname: adb-gateway
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - ADB_API_KEY=default-adb-key-2026
+      - ADB_COMMAND_TIMEOUT=30000
+      - ADB_PAIR_TIMEOUT=60000
+      - PORT=3000
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /app/node_modules
+      - ./device.json:/app/device.json
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
